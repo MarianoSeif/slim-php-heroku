@@ -98,6 +98,16 @@ $rectangulo = new Rectangulo($v1, $v3);
 echo $rectangulo->mostrarDatos();
 echo $rectangulo->Dibujar();
 
+$v5 = new Punto(1,1);
+$v6 = new Punto(9,1);
+$v7 = new Punto(9,5);
+$v8 = new Punto(1,5);
+
+$rectangulo2 = new Rectangulo($v5, $v7);
+
+echo $rectangulo2->mostrarDatos();
+echo $rectangulo2->Dibujar();
+
 
 /*
 Seif Mariano
