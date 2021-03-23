@@ -101,9 +101,52 @@ echo $rectangulo->Dibujar();
 
 /*
 Seif Mariano
-
+Aplicación No 17 (Auto)
 */
 echo '<h2>Ejercicio 17</h2> <br>';
+require './class/Auto.php';
+
+$a1 = new Auto('bmw', 'rojo');
+$a2 = new Auto('bmw', 'amarillo');
+
+$a3 = new Auto('audi', 'gris', 10500);
+$a4 = new Auto('audi', 'gris', 18300);
+
+$a5 = new Auto('lamborghini', 'negro', 22400, new \DateTime('01-01-2010'));
+
+$a3->AgregarImpuestos(1500);
+$a4->AgregarImpuestos(1500);
+$a5->AgregarImpuestos(1500);
+
+echo 'Suma de a1 y a2: '.Auto::Add($a1, $a2).'<br>';
+echo 'Suma de a3 y a4: '.Auto::Add($a3, $a4).'<br>';
+
+echo 'Compara a1 con a2: ';
+if ($a1->Equals($a2)){
+    echo 'son iguales';
+}else{
+    echo 'no son iguales';
+}
+echo '<br>';
+
+echo 'Compara a1 con a5: ';
+if ($a1->Equals($a5)){
+    echo 'son iguales';
+}else{
+    echo 'no son iguales';
+}
+echo '<br>';
+echo '<br>';
+
+//Muestro los autos
+$autos = array($a1, $a2, $a3, $a4, $a5);
+
+for ($i=0; $i < count($autos); $i++) { 
+    if($i % 2 != 0){
+        Auto::MostrarAuto($autos[$i]);
+    }
+}
+
 
 /*
 Seif Mariano
