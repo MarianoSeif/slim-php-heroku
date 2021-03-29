@@ -11,7 +11,6 @@ if( isset($_POST["name"]) && !empty($_POST["name"])
     && isset($_POST["email"]) && !empty($_POST["email"]) ){
         
         $user = new User($_POST["name"], $_POST["pass"], $_POST["email"]);
-        var_dump($user);
 
         $file = fopen('usuarios.csv', 'a');
         if($file){
