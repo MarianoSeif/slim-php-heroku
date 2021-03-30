@@ -22,7 +22,7 @@ if(isset($_GET["datos"]) && !empty($_GET["datos"])){
                 foreach ($usuarios as $usuario) {
                     $outputHtml = $usuario->listar($outputHtml);
                 }
-                $outputHtml.'</ul>';
+                $outputHtml = $outputHtml.'</ul>';
                 echo $outputHtml;
             }else{
                 echo 'ERROR No se pudo abrir el archivo';
