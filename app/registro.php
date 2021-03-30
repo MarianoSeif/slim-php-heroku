@@ -1,9 +1,5 @@
 <?php
 
-//var_dump($_POST["name"]);
-//var_dump($_POST["pass"]);
-//var_dump($_POST["email"]);
-
 require './class/user.php';
 
 if( isset($_POST["name"]) && !empty($_POST["name"]) 
@@ -14,11 +10,7 @@ if( isset($_POST["name"]) && !empty($_POST["name"])
 
         $file = fopen('usuarios.csv', 'a');
         if($file){
-            if(fwrite($file, $user->__toCsv())){
-                echo 'Los datos fueron guardados';
-            }else{
-                echo 'ERROR al escribir el archivo';
-            }
+            echo $user->guardar($file);
             fclose($file);
         }else{
             echo 'ERROR al crear el archivo';
