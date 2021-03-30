@@ -19,6 +19,7 @@ if( isset($_POST["name"]) && !empty($_POST["name"])
             }else{
                 echo 'ERROR al escribir el archivo';
             }
+            fclose($file);
         }else{
             echo 'ERROR al crear el archivo';
         }
