@@ -1,16 +1,22 @@
 <?php
-
-class User
+class User implements JsonSerializable
 {
     private $nombre;
     private $pass;
     private $email;
+    private $imagen;
 
-    public function __construct($nombre, $pass, $email)
+    public function __construct($nombre, $pass, $email, $imagen = null)
     {
         $this->nombre = $nombre;
         $this->pass = $pass;
         $this->email = $email;
+        $this->imagen = $imagen;
+    }
+
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
     }
 
     public function __toCsv()
@@ -25,6 +31,19 @@ class User
             return 'ERROR al escribir el archivo';
         }
     }
+
+    public function guardarJson($file){
+        $id = rand(1, 10000);
+        $fecha = date('d/m/Y h:i:s');
+        $linea = json_encode([$this->jsonSerialize(), $fecha])."\n";
+
+        if(fwrite($file, $linea)){
+            return 'Los datos fueron guardados';
+        }else{
+            return 'ERROR al escribir el archivo';
+        }
+    }
+
     public function listar($outputHtml){
         $outputHtml = $outputHtml.'<li>User: '.$this->getNombre().', Pass: '.$this->getPass().', eMail: '.$this->getEmail().'</li>';
         return $outputHtml;
