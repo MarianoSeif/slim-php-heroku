@@ -49,6 +49,16 @@ class User implements JsonSerializable
         return $outputHtml;
     }
 
+    public static function crearListaHtml($usuarios){
+        $outputHtml = '<ul>';
+        foreach ($usuarios as $usuario) {
+            $outputHtml = $outputHtml.'<li><img width="100" height="100" src="./'.$usuario->getImagen().'">'.' User: '.$usuario->getNombre().', Pass: '.$usuario->getPass().', eMail: '.$usuario->getEmail().'</li>';
+        }
+        $outputHtml = $outputHtml.'</ul>';
+        
+        return $outputHtml;
+    }
+
     public static function validarUsuario($email, $pass){
         $usuarios = User::leerArhivoUsuarios();
         foreach ($usuarios as $usuario) {
@@ -63,7 +73,7 @@ class User implements JsonSerializable
         }
         echo 'Usuario no registrado';
     }
-
+    
     public static function leerArhivoUsuarios(){
         $file = fopen('usuarios.csv', 'r');
         if($file){
@@ -72,6 +82,24 @@ class User implements JsonSerializable
                 if($line){
                     $datos = explode(',', $line);
                     $user = new User(trim($datos[0]), trim($datos[1]), trim($datos[2]));
+                    $usuarios[] = $user;
+                }
+            }
+            fclose($file);
+            return $usuarios;
+        }else{
+            echo 'ERROR No se pudo abrir el archivo';
+        }
+    }
+
+    public static function leerArhivoUsuariosJson(){
+        $file = fopen('usuarios.json', 'r');
+        if($file){
+            while(!feof($file)){
+                $line = fgets($file);
+                if($line){
+                    $datos = json_decode($line);
+                    $user = new User($datos[0]->nombre, $datos[0]->pass, $datos[0]->email, $datos[0]->imagen);
                     $usuarios[] = $user;
                 }
             }
@@ -92,6 +120,10 @@ class User implements JsonSerializable
 
     public function getEmail(){
         return $this->email;
+    }
+
+    public function getImagen(){
+        return $this->imagen;
     }
 
 }
