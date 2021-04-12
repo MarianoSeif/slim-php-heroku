@@ -1,8 +1,5 @@
 <?php
 
-
-$lista = [];
-
 if(isset($_GET["datos"]) && !empty($_GET["datos"])){
     $datos = $_GET["datos"];
     switch ($datos) {
