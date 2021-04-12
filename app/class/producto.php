@@ -24,6 +24,17 @@ class Producto implements JsonSerializable
         $this->precio = $precio;
     }
 
+    public static function buscarProducto($codigoBarras, $productos){
+        foreach ($productos as $producto) {
+            if($producto->getCodigoBarras() == $codigoBarras){
+                $stock = $producto->getStock();
+                if($stock == 0) echo "Producto sin stock \n";
+                return $stock;
+            }
+        }
+        return false;
+    }
+
     public function jsonSerialize()
     {
         return get_object_vars($this);
