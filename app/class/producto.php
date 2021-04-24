@@ -9,12 +9,28 @@ class Producto implements JsonSerializable
     private $stock;
     private $precio;
 
-    public function __construct($codigoBarras, $nombre, $tipo, $stock, $precio, $id = null)
+    public function __construct($codigoBarras = null, $nombre = null, $tipo = null, $stock = null, $precio = null, $id = null)
     {
-        if(is_null($id)){
+        /* if(is_null($id)){
             $this->id = rand(1, 10000);
         }else{
             $this->id = $id;
+        } */
+
+        if(!is_null($codigoBarras)){
+            $this->codigoBarras = $codigoBarras;
+        }
+        if(!is_null($nombre)){
+            $this->nombre = $nombre;
+        }
+        if(!is_null($tipo)){
+            $this->tipo = $tipo;
+        }
+        if(!is_null($stock)){
+            $this->stock = $stock;
+        }
+        if(!is_null($precio)){
+            $this->precio = $precio;
         }
             
         $this->codigoBarras = $codigoBarras;

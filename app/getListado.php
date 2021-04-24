@@ -10,7 +10,7 @@ if(isset($_GET["datos"]) && !empty($_GET["datos"])){
             break;
         case 'productos':
             require './class/producto.php';
-            var_dump(Producto::leerArchivo());
+            echo Producto::leerArchivo();
             break;
         default:
             echo 'No dispongo de esos datos por el momento';

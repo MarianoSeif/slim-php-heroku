@@ -6,13 +6,25 @@ class User implements JsonSerializable
     private $email;
     private $imagen;
 
-    public function __construct($nombre, $pass, $email, $imagen = null)
+    public function __construct($nombre, $apellido, $mail, $clave, $localidad, $imagen = null)
     {
         $this->nombre = $nombre;
         $this->pass = $pass;
         $this->email = $email;
         $this->imagen = $imagen;
     }
+
+    public function persist()
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta =$objetoAccesoDato->RetornarConsulta("INSERT into usuarios (titel,interpret,jahr)values(:titulo,:cantante,:anio)");
+        $consulta->bindValue(':titulo',$this->titulo, PDO::PARAM_INT);
+        $consulta->bindValue(':anio', $this->año, PDO::PARAM_STR);
+        $consulta->bindValue(':cantante', $this->cantante, PDO::PARAM_STR);
+        $consulta->execute();		
+        return $objetoAccesoDato->RetornarUltimoIdInsertado();
+    }
+
 
     public function jsonSerialize()
     {
