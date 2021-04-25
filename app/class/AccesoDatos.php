@@ -18,13 +18,13 @@ class AccesoDatos
     }
  
     public function RetornarConsulta($sql)
-    { 
-        return $this->objetoPDO->prepare($sql); 
+    {
+        return $this->objetoPDO->prepare($sql);
     }
      
     public function RetornarUltimoIdInsertado()
     { 
-        return $this->objetoPDO->lastInsertId(); 
+        return $this->objetoPDO->lastInsertId();
     }
  
     public static function dameUnObjetoAcceso()

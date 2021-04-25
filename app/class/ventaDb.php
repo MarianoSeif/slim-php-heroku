@@ -1,6 +1,6 @@
 <?php
 
-include 'AccesoDatos.php';
+include_once 'AccesoDatos.php';
 
 class VentaDb
 {
@@ -26,6 +26,17 @@ class VentaDb
         }
     }
 
+    public function save()
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO ventas(id_producto,id_usuario,cantidad,fecha_de_venta) values(:id_producto,:id_usuario,:cantidad,:fecha_de_venta)");
+        $consulta->bindValue(':id_producto',$this->id_producto, PDO::PARAM_INT);
+        $consulta->bindValue(':id_usuario', $this->id_usuario, PDO::PARAM_INT);
+        $consulta->bindValue(':cantidad', $this->cantidad, PDO::PARAM_INT);
+        $consulta->bindValue(':fecha_de_venta', $this->fecha_de_venta, PDO::PARAM_STR);
+        return $consulta->execute();
+    }
+    
     public static function getAllVentas()
 	{
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 

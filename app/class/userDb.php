@@ -1,6 +1,6 @@
 <?php
 
-include 'AccesoDatos.php';
+include_once 'AccesoDatos.php';
 
 class UserDb
 {
@@ -32,6 +32,14 @@ class UserDb
         if(!is_null($imagen)){
             $this->imagen = $imagen;
         }
+    }
+
+    public static function buscarUsuario($id){
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+        $consulta =$objetoAccesoDato->RetornarConsulta("SELECT  * FROM usuarios WHERE id = :id");
+        $consulta->bindValue(':id', $id);
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_CLASS, "UserDb");
     }
 
     public static function validarUsuario($email, $pass){
