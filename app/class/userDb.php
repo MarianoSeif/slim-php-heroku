@@ -35,7 +35,7 @@ class UserDb
     }
 
     public static function buscarUsuario($id){
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso('heroku');
         $consulta =$objetoAccesoDato->RetornarConsulta("SELECT  * FROM usuarios WHERE id = :id");
         $consulta->bindValue(':id', $id);
         $consulta->execute();
