@@ -1,5 +1,20 @@
 <?php
 
+/* 
+Seif Mariano
+
+Aplicación No 31 (RealizarVenta BD )
+Archivo: RealizarVenta.php
+método:POST
+Recibe los datos del producto(código de barra), del usuario (el id )y la cantidad de ítems ,por
+POST .
+Verificar que el usuario y el producto exista y tenga stock.
+Retorna un :
+“venta realizada”Se hizo una venta
+“no se pudo hacer“si no se pudo hacer
+Hacer los métodos necesarios en las clases
+ */
+
 require '../class/productoDb.php';
 require '../class/userDb.php';
 require '../class/ventaDb.php';
@@ -14,7 +29,7 @@ if( isset($_POST["codigoBarras"]) && !empty($_POST["codigoBarras"])
         $idUser = intval($_POST["id"]);
 
         $productos = ProductoDb::buscarProducto($codigoBarras);
-        $user = UserDb::buscarUsuario($idUser);
+        $user = UserDb::buscarUsuario('id', $idUser);
         
         if($productos[0] && !is_null($productos[0]) && ($stock = $productos[0]->getStock()) >= $cantidad && $user){
             $venta = new VentaDb($idUser, $productos[0]->getId(), $cantidad, date('Y-m-d'));

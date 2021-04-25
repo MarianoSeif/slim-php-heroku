@@ -34,15 +34,36 @@ class UserDb
         }
     }
 
-    public static function buscarUsuario($id){
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso('heroku');
-        $consulta =$objetoAccesoDato->RetornarConsulta("SELECT  * FROM usuarios WHERE id = :id");
-        $consulta->bindValue(':id', $id);
+    public function cambiarPass($pass, $newPass)
+    {
+        if($this->clave == $pass){
+            $this->clave = $newPass;
+            return true;
+        }else{
+            echo "Password incorrecta. \n";
+            return false;
+        }
+    }
+    
+    public static function buscarUsuario($atributo = 'id', $valor)
+    {
+        switch ($atributo) {
+            case 'id':
+                $column = 'id';
+                break;
+            case 'mail':
+                $column = 'mail';
+                break;
+        }
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM usuarios WHERE $column = :valor");
+        $consulta->bindValue(':valor', $valor, PDO::PARAM_STR);
         $consulta->execute();
         return $consulta->fetchAll(PDO::FETCH_CLASS, "UserDb");
     }
 
-    public static function validarUsuario($email, $pass){
+    public static function validarUsuario($email, $pass)
+    {
         $usuarios = UserDb::getAllUsers();
         foreach ($usuarios as $usuario) {
             if($email == $usuario->getEmail()){
@@ -57,8 +78,16 @@ class UserDb
         echo 'Usuario no registrado';
         return false;
     }
+    
+    public function update(){
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta =$objetoAccesoDato->RetornarConsulta("UPDATE usuarios SET clave = :clave WHERE mail = :mail");
+        $consulta->bindValue(':clave', $this->clave, PDO::PARAM_STR);
+        $consulta->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+        return $consulta->execute();
+    }
 
-    public function persist()
+    public function save()
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO usuarios(nombre,apellido,mail,fecha,localidad,clave) values(:nombre,:apellido,:mail,:fecha,:localidad,:clave)");
@@ -68,10 +97,9 @@ class UserDb
         $consulta->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         $consulta->bindValue(':localidad', $this->localidad, PDO::PARAM_STR);
         $consulta->bindValue(':fecha', date('Y-m-d'), PDO::PARAM_STR);
-        $consulta->execute();		
-        return $objetoAccesoDato->RetornarUltimoIdInsertado();
+        return $consulta->execute();
     }
-
+    
     public static function getAllUsers()
 	{
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
