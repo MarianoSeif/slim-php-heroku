@@ -19,7 +19,7 @@ class AccesoDatos
                 $db["pass"],
                 ltrim($db["path"], "/")
             ));
-            $this->objetoPDO->exec("SET CHARACTER SET utf8");
+            //$this->objetoPDO->exec("SET CHARACTER SET utf8");
 
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage(); 
