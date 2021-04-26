@@ -1,7 +1,7 @@
 <?php
 
 include_once 'AccesoDatos.php';
-class ProductoDb
+class ProductoDb implements JsonSerializable
 {
     private $id;
     private $codigo_de_barra;
@@ -35,6 +35,32 @@ class ProductoDb
         if(!is_null($fecha_de_modificacion)){
             $this->fecha_de_modificacion = $fecha_de_modificacion;
         }
+    }
+
+    /* Ej Parte 10 - B */
+    public static function getAllProductsOrdered($modo)
+    {
+        switch ($modo) {
+            case 'asc':
+                $order = 'ASC';
+                break;
+            case 'desc':
+                $order = 'DESC';
+                break;
+            default:
+                echo "opcion incorrecta \n";
+                return false;
+                break;
+        }
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+        $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM productos ORDER BY nombre $order, tipo $order");
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_CLASS, "ProductoDb");
+    }
+
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
     }
 
     public function updateAll()

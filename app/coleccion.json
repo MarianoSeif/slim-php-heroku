@@ -1,0 +1,149 @@
+/* PUNTO A
+    Params del post:
+        datos: punto10
+        punto: A
+        modo: asc
+*/
+[
+    {"id":106,"nombre":"Bili","apellido":"Baus","clave":"","mail":"bhoff5@addthis.com","localidad":"Moreno","imagen":null,"fecha":"2020-11-27"},
+    {"id":105,"nombre":"Garrick","apellido":"Brent","clave":"","mail":"gbrent4@theguardian.com","localidad":"Moron","imagen":null,"fecha":"2020-12-17"},
+    {"id":103,"nombre":"Deloris","apellido":"Fosis","clave":"","mail":"bsharpe2@wisc.edu","localidad":"Avellaneda","imagen":null,"fecha":"2020-11-28"},
+    {"id":102,"nombre":"German","apellido":"Gerram","clave":"","mail":"ggerram1@hud.gov","localidad":"Berazategui","imagen":null,"fecha":"2020-05-08"},
+    {"id":101,"nombre":"Mariano","apellido":"Kautor","clave":"","mail":"dkantor0@example.com","localidad":"Quilmes","imagen":null,"fecha":"2021-01-07"},
+    {"id":104,"nombre":"Brok","apellido":"Neiner","clave":"","mail":"bblazic3@desdev.cn","localidad":"Quilmes","imagen":null,"fecha":"2020-12-08"},
+    {"id":109,"nombre":"Jose","apellido":"Perez","clave":"clave","mail":"mail@mail.com.ar","localidad":"Avellaneda","imagen":null,"fecha":"2021-04-19"},
+    {"id":108,"nombre":"Mariano","apellido":"Seif","clave":"clavenueva2","mail":"19mfs81@gmail.com","localidad":"Avellaneda","imagen":null,"fecha":"2021-04-17"}
+]
+
+/* PUNTO B
+    Params del post:
+        datos: punto10
+        punto: B
+        modo: desc
+*/
+[
+    {"id":1001,"codigo_de_barra":77900361,"nombre":"Westmacott","tipo":"liquido","stock":30,"precio":"15.87","fecha_de_creacion":"2021-02-09","fecha_de_modificacion":"2020-09-26"},
+    {"id":1013,"codigo_de_barra":77900392,"nombre":"Test2","tipo":"solido2","stock":222,"precio":"55.55","fecha_de_creacion":"2021-04-24","fecha_de_modificacion":"2021-04-25"},
+    {"id":1002,"codigo_de_barra":77900362,"nombre":"Spirit","tipo":"solido","stock":50,"precio":"66.60","fecha_de_creacion":"2020-09-18","fecha_de_modificacion":"2021-04-24"},
+    {"id":1006,"codigo_de_barra":77900366,"nombre":"Schrader","tipo":"polvo","stock":0,"precio":"96.54","fecha_de_creacion":"2020-08-02","fecha_de_modificacion":"2020-04-18"},
+    {"id":1003,"codigo_de_barra":77900363,"nombre":"Newgrosh","tipo":"polvo","stock":0,"precio":"68.19","fecha_de_creacion":"2020-11-29","fecha_de_modificacion":"2021-02-11"},
+    {"id":1004,"codigo_de_barra":77900364,"nombre":"McNickle","tipo":"polvo","stock":0,"precio":"53.51","fecha_de_creacion":"2020-11-28","fecha_de_modificacion":"2020-04-17"},
+    {"id":1009,"codigo_de_barra":77900369,"nombre":"Hurry","tipo":"solido","stock":44,"precio":"66.60","fecha_de_creacion":"2020-07-04","fecha_de_modificacion":"2020-05-30"},
+    {"id":1005,"codigo_de_barra":77900365,"nombre":"Hudd","tipo":"solido","stock":60,"precio":"66.60","fecha_de_creacion":"2020-12-19","fecha_de_modificacion":"2020-06-19"},
+    {"id":1008,"codigo_de_barra":77900368,"nombre":"Fleming","tipo":"solido","stock":38,"precio":"66.60","fecha_de_creacion":"2020-10-26","fecha_de_modificacion":"0202-10-03"},
+    {"id":1011,"codigo_de_barra":77900311,"nombre":"Chocolate","tipo":"S\u00f3lido","stock":0,"precio":"66.60","fecha_de_creacion":"2021-04-17","fecha_de_modificacion":"2021-04-17"},
+    {"id":1007,"codigo_de_barra":77900367,"nombre":"Bachellier","tipo":"solido","stock":59,"precio":"66.60","fecha_de_creacion":"2021-01-30","fecha_de_modificacion":"2020-06-07"}
+]
+
+/*PUNTO C
+    Params del post:
+        datos: punto10
+        punto: C
+        min: 3
+        max: 6
+*/
+[
+    {"id":2,"id_usuario":102,"id_producto":1008,"cantidad":3,"fecha_de_venta":"2020-08-16"},
+    {"id":3,"id_usuario":102,"id_producto":1007,"cantidad":4,"fecha_de_venta":"2021-01-24"},
+    {"id":4,"id_usuario":103,"id_producto":1006,"cantidad":5,"fecha_de_venta":"2021-01-14"},
+    {"id":5,"id_usuario":104,"id_producto":1003,"cantidad":6,"fecha_de_venta":"2021-03-20"},
+    {"id":7,"id_usuario":104,"id_producto":1003,"cantidad":6,"fecha_de_venta":"2020-12-02"},
+    {"id":8,"id_usuario":106,"id_producto":1003,"cantidad":6,"fecha_de_venta":"2020-06-10"},
+    {"id":9,"id_usuario":106,"id_producto":1002,"cantidad":6,"fecha_de_venta":"2021-02-04"},
+    {"id":13,"id_usuario":108,"id_producto":1001,"cantidad":3,"fecha_de_venta":"2021-04-24"}
+]
+
+/*Punto D
+    Params del post:
+        datos: punto10
+        punto: D
+        fecha1: '2021-02-01'
+        fecha2: '2021-03-30'
+*/
+[{"Total":"19"}]
+
+/*PUNTO E
+    Params del post:
+        datos: punto10
+        punto: E
+        cantidad: 4
+*/
+[
+    {"codigo_de_barra":77900361},
+    {"codigo_de_barra":77900368},
+    {"codigo_de_barra":77900366},
+    {"codigo_de_barra":77900367}
+]
+
+/* Punto F
+    Params del post:
+        datos: punto10
+        punto: F
+*/
+[
+    {"Usuario":"Mariano Kautor","Producto":"Westmacott"},
+    {"Usuario":"German Gerram","Producto":"Fleming"},
+    {"Usuario":"German Gerram","Producto":"Bachellier"},
+    {"Usuario":"Deloris Fosis","Producto":"Schrader"},
+    {"Usuario":"Brok Neiner","Producto":"Newgrosh"},
+    {"Usuario":"Garrick Brent","Producto":"Hudd"},
+    {"Usuario":"Brok Neiner","Producto":"Newgrosh"},
+    {"Usuario":"Bili Baus","Producto":"Newgrosh"},
+    {"Usuario":"Bili Baus","Producto":"Spirit"},
+    {"Usuario":"Bili Baus","Producto":"Westmacott"},
+    {"Usuario":"Mariano Seif","Producto":"Westmacott"},
+    {"Usuario":"Bili Baus","Producto":"Hudd"}
+]
+
+/*PUNTO G
+    Params del post:
+        datos: punto10
+        punto: G
+*/
+[
+    {"Id":1,"Monto":"31.74"},
+    {"Id":2,"Monto":"199.80"},
+    {"Id":3,"Monto":"266.40"},
+    {"Id":4,"Monto":"482.70"},
+    {"Id":5,"Monto":"409.14"},
+    {"Id":6,"Monto":"466.20"},
+    {"Id":7,"Monto":"409.14"},
+    {"Id":8,"Monto":"409.14"},
+    {"Id":9,"Monto":"399.60"},
+    {"Id":10,"Monto":"15.87"},
+    {"Id":13,"Monto":"47.61"},
+    {"Id":14,"Monto":"4528.80"}
+]
+
+/* PUNTO H 
+    Params del post:
+        datos: punto10
+        punto: H
+        id: 104
+        codigo_de_barra: 77900363
+*/
+[{"Total":"12"}]
+
+/*PUNTO I
+    Params del post:
+        datos: punto10
+        punto: I
+        localidad: Berazategui
+*/
+[
+    {"codigo_de_barra":77900368},
+    {"codigo_de_barra":77900367}
+]
+
+/*PUNTO J 
+    Params del post:
+        datos: punto10
+        punto: J
+        str: er
+*/
+[
+    {"id":102,"nombre":"German","apellido":"Gerram","mail":"ggerram1@hud.gov","fecha":"2020-05-08","localidad":"Berazategui","clave":""},
+    {"id":104,"nombre":"Brok","apellido":"Neiner","mail":"bblazic3@desdev.cn","fecha":"2020-12-08","localidad":"Quilmes","clave":""},
+    {"id":109,"nombre":"Jose","apellido":"Perez","mail":"mail@mail.com.ar","fecha":"2021-04-19","localidad":"Avellaneda","clave":"clave"}
+]
+

@@ -2,7 +2,7 @@
 
 include_once 'AccesoDatos.php';
 
-class UserDb
+class UserDb implements JsonSerializable
 {
     private $id;
     private $nombre;
@@ -32,6 +32,44 @@ class UserDb
         if(!is_null($imagen)){
             $this->imagen = $imagen;
         }
+    }
+
+    /* Ej Parte 10 - A */
+    public static function getAllUsersOrdered($modo)
+    {
+        switch ($modo) {
+            case 'asc':
+                $order = 'ASC';
+                break;
+            case 'desc':
+                $order = 'DESC';
+                break;
+            default:
+                echo "opcion incorrecta \n";
+                return false;
+                break;
+        }
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+        $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM usuarios ORDER BY apellido $order, nombre $order");
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_CLASS, "UserDb");
+    }
+
+    /* Ej 10 - J */
+    public static function getUsersByStr($str)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+        $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM usuarios WHERE nombre LIKE CONCAT('%', :string1, '%') OR apellido LIKE CONCAT('%', :string2, '%')");
+        $consulta->bindValue(':string1', $str, PDO::PARAM_STR);
+        $consulta->bindValue(':string2', $str, PDO::PARAM_STR);
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
     }
 
     public function cambiarPass($pass, $newPass)
