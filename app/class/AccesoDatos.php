@@ -11,7 +11,7 @@ class AccesoDatos
             
             $db = parse_url(getenv("DATABASE_URL"));
 
-            $pdo = new PDO("pgsql:" . sprintf(
+            $this->objetoPDO = new PDO("pgsql:" . sprintf(
                 "host=%s;port=%s;user=%s;password=%s;dbname=%s",
                 $db["host"],
                 $db["port"],
@@ -19,6 +19,7 @@ class AccesoDatos
                 $db["pass"],
                 ltrim($db["path"], "/")
             ));
+            $this->objetoPDO->exec("SET CHARACTER SET utf8");
 
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage(); 
