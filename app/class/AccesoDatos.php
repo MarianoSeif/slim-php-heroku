@@ -8,10 +8,19 @@ class AccesoDatos
     private function __construct()
     {
         try { 
-            $this->objetoPDO = new PDO('mysql:host=localhost;dbname=prog33;charset=utf8', 'mfs','mariano81', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-            $this->objetoPDO->exec("SET CHARACTER SET utf8");
-            } 
-        catch (PDOException $e) { 
+            
+            $db = parse_url(getenv("DATABASE_URL"));
+
+            $pdo = new PDO("pgsql:" . sprintf(
+                "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+                $db["host"],
+                $db["port"],
+                $db["user"],
+                $db["pass"],
+                ltrim($db["path"], "/")
+            ));
+
+        } catch (PDOException $e) {
             print "Error!: " . $e->getMessage(); 
             die();
         }
@@ -30,7 +39,7 @@ class AccesoDatos
     public static function dameUnObjetoAcceso()
     { 
         if (!isset(self::$ObjetoAccesoDatos)) {          
-            self::$ObjetoAccesoDatos = new AccesoDatos(); 
+            self::$ObjetoAccesoDatos = new AccesoDatos();
         } 
         return self::$ObjetoAccesoDatos;        
     }
